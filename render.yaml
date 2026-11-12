@@ -1,0 +1,18 @@
+services:
+  # Backend Docker Service with FFmpeg & FastAPI
+  - type: web
+    name: viralclip-backend
+    runtime: docker
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: ./backend
+    plan: starter
+    region: frankfurt
+    envVars:
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: ELEVENLABS_API_KEY
+        sync: false
+      - key: ALLOWED_ORIGINS
+        value: "http://localhost:3000,https://*.vercel.app,https://*.onrender.com"
+      - key: PORT
+        value: 8000

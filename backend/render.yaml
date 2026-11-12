@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: viralclip-backend
+    env: docker
+    dockerfilePath: Dockerfile
+    plan: starter
+    region: frankfurt
+    envVars:
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: ELEVENLABS_API_KEY
+        sync: false
+      - key: ALLOWED_ORIGINS
+        value: "http://localhost:3000,https://*.vercel.app"
+      - key: PORT
+        value: 8000
+
